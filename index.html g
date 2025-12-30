@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Metisfutures — Advanced Trading Platform</title>
+
+  <!-- Tailwind CDN (no build step required) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <meta name="description" content="Metisfutures — Dominating the Bitcoin Space. Advanced trading platform with deep liquidity, low latency, and institutional-grade security." />
+  <style>
+    /* small helper for gradient text fallback */
+    .gradient-text {
+      background: linear-gradient(90deg,#60a5fa,#a78bfa,#fb7185);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-slate-100 antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-blue-900/30 bg-slate-950/50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <!-- Zap icon (simple SVG) -->
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8L21 10h-7l-1-8z" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold gradient-text">Metisfutures</h1>
+            <p class="text-xs text-blue-300">Advanced Trading Platform</p>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-2">
+          <button class="px-3 py-2 rounded-md text-blue-200 hover:bg-blue-900/30">Overview</button>
+          <button class="px-3 py-2 rounded-md text-blue-200 hover:bg-blue-900/30">Markets</button>
+          <button class="px-3 py-2 rounded-md text-blue-200 hover:bg-blue-900/30">Portfolio</button>
+          <button class="px-3 py-2 rounded-md text-blue-200 hover:bg-blue-900/30">Analytics</button>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+          <a class="hidden md:inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium" href="#">
+            Start Trading
+          </a>
+          <button class="md:hidden px-3 py-2 rounded-md bg-slate-800/50">Menu</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Hero -->
+    <section class="relative overflow-hidden rounded-3xl p-8 md:p-12 border border-blue-500/20 bg-gradient-to-br from-blue-900/10 to-slate-900/10 backdrop-blur">
+      <div class="absolute -right-24 -top-24 w-72 h-72 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+              <span class="gradient-text">Dominating the Bitcoin Space</span>
+              <br/>
+              <span class="text-white">Redefining Crypto Trading in 2026</span>
+            </h2>
+            <p class="text-slate-300 mb-6">
+              Metisfutures is revolutionizing Bitcoin trading with deep liquidity, institutional-grade security, and sub-millisecond execution. Built for professional traders and institutions.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <a class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-semibold shadow-lg" href="#">
+                Connect Wallet
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M7 17l10-10" stroke="white" stroke-width="2"/><path d="M17 17h4v-4" stroke="white" stroke-width="2"/></svg>
+              </a>
+              <a class="inline-flex items-center gap-2 px-5 py-3 bg-slate-800/70 rounded-xl border border-blue-500/30" href="#">Learn More</a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full sm:w-auto">
+            <div class="bg-slate-900/60 rounded-2xl p-4 border border-blue-900/30 text-center">
+              <div class="text-sm text-slate-400">Daily Volume</div>
+              <div class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent gradient-text" id="stat-volume">$0</div>
+              <div class="text-xs text-slate-400 mt-1">BTC Futures</div>
+            </div>
+            <div class="bg-slate-900/60 rounded-2xl p-4 border border-blue-900/30 text-center">
+              <div class="text-sm text-slate-400">Active Traders</div>
+              <div class="text-2xl md:text-3xl font-bold" id="stat-traders">0</div>
+              <div class="text-xs text-slate-400 mt-1">Real-time users</div>
+            </div>
+            <div class="bg-slate-900/60 rounded-2xl p-4 border border-blue-900/30 text-center">
+              <div class="text-sm text-slate-400">Market Share</div>
+              <div class="text-2xl md:text-3xl font-bold" id="stat-share">0%</div>
+              <div class="text-xs text-slate-400 mt-1">Global BTC Futures</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <div class="text-sm text-slate-400">Total Volume</div>
+        <div class="text-2xl font-bold mt-2" id="card-volume">$0</div>
+        <div class="text-xs text-green-400 mt-2">+12.5%</div>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <div class="text-sm text-slate-400">Active Traders</div>
+        <div class="text-2xl font-bold mt-2" id="card-traders">0</div>
+        <div class="text-xs text-green-400 mt-2">+8.3%</div>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <div class="text-sm text-slate-400">Daily Profit</div>
+        <div class="text-2xl font-bold mt-2" id="card-profit">$0</div>
+        <div class="text-xs text-green-400 mt-2">+15.7%</div>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <div class="text-sm text-slate-400">Market Share</div>
+        <div class="text-2xl font-bold mt-2" id="card-share">0%</div>
+        <div class="text-xs text-green-400 mt-2">+2.1%</div>
+      </div>
+    </section>
+
+    <!-- Main content: charts + distribution -->
+    <section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold">Live Market Overview</h3>
+          <div class="text-sm text-green-400 flex items-center gap-2">
+            <span class="inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Live
+          </div>
+        </div>
+        <canvas id="marketChart" height="160"></canvas>
+      </div>
+
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+        <h3 class="text-lg font-semibold mb-4">Portfolio Distribution</h3>
+        <canvas id="portfolioChart" height="200"></canvas>
+        <div class="mt-4 space-y-2">
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#3b82f6"></span><span class="text-sm">Stocks</span></div><div class="font-semibold">42%</div></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#8b5cf6"></span><span class="text-sm">Crypto</span></div><div class="font-semibold">28%</div></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#10b981"></span><span class="text-sm">Forex</span></div><div class="font-semibold">18%</div></div>
+          <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#f59e0b"></span><span class="text-sm">Commodities</span></div><div class="font-semibold">12%</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews / Trust -->
+    <section class="mt-8">
+      <h3 class="text-2xl font-bold mb-4">Trusted by Traders Worldwide</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- review card example (repeatable) -->
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white">SC</div>
+            <div>
+              <div class="font-semibold">Sarah Chen</div>
+              <div class="text-xs text-slate-400">Bitcoin Whale · Singapore</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"I've been trading Bitcoin since 2015, and Metisfutures is hands-down the best platform I've ever used. The liquidity is insane."</p>
+          <div class="flex items-center justify-between mt-4 text-xs text-slate-500 border-t border-slate-800/50 pt-3">
+            <span>December 2025</span>
+            <span class="text-green-400 flex items-center gap-2"><span class="w-2 h-2 bg-green-400 rounded-full"></span>Verified Trader</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white">MJ</div>
+            <div>
+              <div class="font-semibold">Marcus Johnson</div>
+              <div class="text-xs text-slate-400">Pro Trader · New York</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"After trading BTC on every major exchange, Metisfutures blows them all away. Execution is instant and funding rates are fair."</p>
+          <div class="flex items-center justify-between mt-4 text-xs text-slate-500 border-t border-slate-800/50 pt-3">
+            <span>November 2025</span>
+            <span class="text-green-400 flex items-center gap-2"><span class="w-2 h-2 bg-green-400 rounded-full"></span>Verified Trader</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-blue-900/30">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white">ER</div>
+            <div>
+              <div class="font-semibold">Elena Rodriguez</div>
+              <div class="text-xs text-slate-400">Options Specialist · Barcelona</div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"The Bitcoin options market here is revolutionary. Perfect execution and excellent strike selection."</p>
+          <div class="flex items-center justify-between mt-4 text-xs text-slate-500 border-t border-slate-800/50 pt-3">
+            <span>December 2025</span>
+            <span class="text-green-400 flex items-center gap-2"><span class="w-2 h-2 bg-green-400 rounded-full"></span>Verified Trader</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-blue-900/30 mt-12 py-6 bg-slate-950/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400">
+      <p>© 2025 Metisfutures. Advanced Trading Platform. All rights reserved.</p>
+      <p class="text-xs mt-2">Risk Warning: Trading involves substantial risk of loss.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Helper: format numbers with suffix
+    function formatMoney(n) {
+      const abs = Math.abs(n);
+      if (abs >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+      if (abs >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+      if (abs >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
+      return '$' + n;
+    }
+
+    // animated counter
+    function animateCount(el, target, duration = 1500, formatter = v => v) {
+      const start = 0;
+      const startTime = performance.now();
+
+      function step(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value = Math.floor(start + (target - start) * progress);
+        el.textContent = formatter(value);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Initial values (similar to your original component)
+    const targets = {
+      totalVolume: 2800000000, // example $2.8B
+      activeTraders: 850000,
+      dailyProfit: 2850000,
+      marketSharePct: 23.7
+    };
+
+    // Start animations when DOM loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      animate
